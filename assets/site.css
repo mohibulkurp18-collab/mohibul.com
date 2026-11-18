@@ -1,0 +1,35 @@
+/* site.css — shared extras for the live website (mobile menu, focus, small screens). */
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #FFFFFF; }
+img { max-width: 100%; }
+:focus-visible { outline: 2px solid #B8894A; outline-offset: 3px; }
+
+.menu-btn {
+  display: none; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px;
+  border: 1px solid #D6CFC7; border-radius: 8px; background: #FFFFFF; color: #1C1917;
+  font: 600 15px 'Geist', system-ui, sans-serif; cursor: pointer;
+}
+.menu-btn:hover { border-color: #7F1D1D; color: #7F1D1D; }
+
+@media (max-width: 860px) {
+  .menu-btn { display: inline-flex; }
+  #dc-root header nav[aria-label="Primary"] {
+    display: none !important; flex-basis: 100%; flex-direction: column; align-items: stretch !important;
+    gap: 0 !important; padding: 8px 0 4px; border-top: 1px solid #E7E1DA;
+  }
+  #dc-root header.menu-open nav[aria-label="Primary"] { display: flex !important; }
+  #dc-root header nav[aria-label="Primary"] .navl { padding: 12px 2px; border-bottom: 1px solid #F0EBE5; font-size: 17px !important; }
+  #dc-root header nav[aria-label="Primary"] .navl::after { display: none; }
+  #dc-root header nav[aria-label="Primary"] .navl[aria-current="page"] { color: #7F1D1D; }
+  #dc-root header nav[aria-label="Primary"] .btn { margin-top: 12px; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+@media print {
+  #dc-root header { position: static !important; }
+  .menu-btn { display: none !important; }
+}
